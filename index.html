@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap" rel="stylesheet">
+    <title>Pig Game</title>
+    <style>
+      *{
+        font-family: 'Rubik Bubbles', cursive;
+      }
+      body{
+        background-image: linear-gradient(to top left,#753682 0%,#dc3f44 100%); 
+        /* background: linear-gradient(to right, transparent 50%, #223049 50%), linear-gradient(to right, #00b9ff, #59d941); */
+        /* background: linear-gradient(to top left, #08cbd9, #2d6805); */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 99vh;
+        width: 97vw;
+        /* background: repeating-linear-gradient(
+          -45deg,
+          #d5989a,
+          #d5989a 5px,
+          #753682 5px,
+          #753682 10px
+          ); */
+      }
+      .window{
+        height: 80vh;
+        width: 82vw;
+        background-color: white;
+        opacity: 0.7;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.899);
+        /* box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit; */
+      }
+      .window-main{
+        display: flex;
+        justify-content: flex-start;
+        height: 80vh;
+        background-image: linear-gradient(to top left,#df9aec 0%,#f79497 100%); 
+        /* background-image: linear-gradient(to top left,#e4bbec 0%,#efc1c3 100%);  */
+        border-radius: 10px;
+      }
+      .display-inline{
+        top: 0em;
+        height: 35em;
+        width: 50em;
+        text-align: center;
+      }
+      .window-main-left{
+        left: 0em;
+        height: 80vh;
+      }
+      .window-main-right{
+        right: 0em;
+        height: 80vh;
+      }
+      .name{
+        margin: 100px 0px 10px 0px;
+        font-size: 30px;
+      }
+      .main-score{
+        margin:40px;
+        font-size: 50px;
+        color: #bf2e34;
+      }
+      .button{
+        margin: 150px 10em 40px 10em;
+        font-size: 20px;
+        border: 2px solid  #bf2e34;
+        color: white;
+        background-color: #bf2e34;
+      }
+      .current-content{
+        margin: 10px;
+        font-size: 20px;
+      }
+      .current-score{
+        margin: 20px;
+        font-size: 30px;
+      }
+      .border-radius{
+        border-radius: 10px;
+      }
+      .btn{
+        height: 40px;
+        width: 200px;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.622);
+        border-radius: 25px;
+      }
+      .btn-tag{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 5em;
+        margin: 0em 29em;
+        height: 36em;
+        width: 19em;
+      }
+      .btn-new-game{
+        width: 250px;       
+        margin: 30px 20px 20px 26px;
+      }
+      .btn-new-game img{
+        height: 50px;
+        width: 250px;
+        border-radius: 30px;
+      }
+      .btn-roll-dice{ 
+        width: 100px;
+        height: 100px;
+        margin: 2px auto;
+      }
+      .btn-roll-dice img{
+        height: 100px;
+        width: 100px;
+        border-radius: 20px;
+      }
+      .btn-hold{
+        margin: 0px auto 20px auto;
+      }
+      .btn-hold img{
+        height: 50px;
+        width: 200px;
+        border-radius: 30px;
+      }
+      .left-toggle{
+        border-radius :10px 0px 0px 10px;
+        background : white;
+        
+      }
+      .right-toggle{
+        border-radius: 0px 10px 10px 0px;
+        background: white;
+      }
+      .btn-dice {
+        width: 120px;
+        height: 120px;
+        margin: 35px auto;
+      }
+      .btn-dice img{
+        height: 120px;
+        width: 120px;
+        border-radius: 20px;
+      }
+      .hidden{
+        display: none;
+      }
+      .boxShadow{
+        box-shadow: none;
+      }
+      .background{
+        background: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="window border-radius">
+      <div class="window-main">
+        <!-- left window  -->
+        <div class="display-inline window-main-left ">
+          <div class="name" style="color : #bf2e34">PLAYER 1</div>
+          <div class="main-score main-score-left">0</div>
+          <div class="button button-left border-radius">
+            <div class="current-content">CURRENT</div>
+            <div class="current-score current-score-left">0</div>
+          </div>
+        </div>
+        <!-- right window -->
+        <div class="display-inline window-main-right ">
+          <div class="name" style="color : #bf2e34">PLAYER 2</div>
+          <div class="main-score main-score-right">0</div>
+          <div class="button button-right border-radius">
+            <div class="current-content">CURRENT</div>
+            <div class="current-score current-score-right">0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- different button for action -->
+    <div class="btn-tag"> 
+      <div class="btn btn-new-game"><img class = "img1" src ="image/image46_new_game_logo.png" alt=""></div>
+      <div class="btn btn-roll-dice"><img class = "img2" src="image/image46_dice_logo.jpg" alt="error"></div>
+      <div class="btn btn-dice boxShadow"><img class = "hidden dice" src="image/dice1.png" alt=""></div>
+      <div class="btn btn-hold"><img class = "img3" src="image/image46_hold_image.png" alt="error"></div>
+    </div>
+  </body>
+  <script src="json46.js"></script>
+</html>
